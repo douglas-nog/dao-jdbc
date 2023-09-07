@@ -44,5 +44,12 @@ public class Program {
         seller.setName("Bruce Willis");
         sellerDao.update(seller);
         System.out.println("Update completed");
+
+        System.out.println();
+        System.out.println("Seller Delete: ");
+        seller = sellerDao.findById(11);
+        System.out.println(seller);
+        sellerDao.deleteById(seller.getId());
+        System.out.println("Seller deleted");
     }
 }

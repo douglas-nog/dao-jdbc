@@ -63,7 +63,7 @@ public class SellerDaoJDBC implements SellerDao {
         ResultSet rs = null;
         try {
             st = connection.prepareStatement("update seller set Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? " +
-            "where Id = ?");
+                    "where Id = ?");
 
             st.setString(1, seller.getName());
             st.setString(2, seller.getEmail());
@@ -83,10 +83,23 @@ public class SellerDaoJDBC implements SellerDao {
 
 
     @Override
-    public void deleteById(Seller seller) {
+    public void deleteById(Integer id) {
+        PreparedStatement st = null;
+        try {
+            st = connection.prepareStatement("DELETE FROM seller WHERE Id = ?");
 
+            st.setInt(1, id);
 
+            st.executeUpdate();
+
+        } catch (
+                SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
+
 
     @Override
     public Seller findById(Integer id) {
