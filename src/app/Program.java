@@ -12,13 +12,21 @@ public class Program {
 
         SellerDao sellerDao = DaoFactory.creatSellerDao();
 
+        System.out.println("Seller FindById: ");
         Seller seller = sellerDao.findById(3);
-
         System.out.println(seller);
 
+        System.out.println();
         System.out.println("Seller FindByDepartment: ");
         List<Seller> list = sellerDao.findByDepartment(new Department(2, null));
         for (Seller s : list) {
+            System.out.println(s);
+        }
+
+        System.out.println();
+        System.out.println("Seller FindAll: ");
+        List<Seller> listAll = sellerDao.findAll();
+        for (Seller s : listAll) {
             System.out.println(s);
         }
     }
