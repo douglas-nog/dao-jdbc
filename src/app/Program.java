@@ -31,10 +31,18 @@ public class Program {
             System.out.println(s);
         }
 
+//        System.out.println();
+//        System.out.println("Seller insert: ");
+//        Seller newSeller = new Seller(null, "Rose Pink", "pinkrose@gmail.com", new Date(), 4000, new Department(2, null));
+//        sellerDao.insert(newSeller);
+//        System.out.println("New seller inserted id: " + newSeller.getId());
+
+
         System.out.println();
-        System.out.println("Seller insert: ");
-        Seller newSeller = new Seller(null, "Rose Pink", "pinkrose@gmail.com", new Date(), 4000, new Department(2, null));
-        sellerDao.insert(newSeller);
-        System.out.println("New seller inserted id: " + newSeller.getId());
+        System.out.println("Seller update: ");
+        seller = sellerDao.findById(1);
+        seller.setName("Bruce Willis");
+        sellerDao.update(seller);
+        System.out.println("Update completed");
     }
 }
